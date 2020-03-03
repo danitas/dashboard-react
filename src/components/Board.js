@@ -2,6 +2,9 @@ import React from 'react';
 import data from '../data';
 import TaskColumn from './TaskColumn';
 
+
+
+
 export const Board = () => {
     const sortedItems = {
         open: [],
