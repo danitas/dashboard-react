@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { Edit, Plus } from 'react-feather';
-import AddNewTaskForm from "./AddNewTaskForm"
+import PropTypes from 'prop-types';
+import AddNewTaskForm from "./AddNewTaskForm";
+import { Modal } from "../parts";
 
 const TaskColumn = ({ addNewTask, items, title }) => {
     const [show, showForm] = useState(false);
@@ -28,9 +30,26 @@ const TaskColumn = ({ addNewTask, items, title }) => {
 
                 }
             </ul>
-            {show && <div className="modal"><div className="contained-modal-title-vcenter"><AddNewTaskForm show={show}/></div></div>}
+            <Modal modalState={show} handleState={showForm}>
+                <div className="contained-modal-title-vcenter">
+                    <AddNewTaskForm showForm={showForm} />
+                </div>
+            </Modal>
         </div>
     );
+};
+
+TaskColumn.propTypes = {
+    addNewTask: PropTypes.func,
+    items:  PropTypes.array.isRequired,
+    title:  PropTypes.string
+
+};
+
+TaskColumn.defaultTypes = {
+    addNewTask: null,
+    title:  ''
+
 };
 
 export default TaskColumn;

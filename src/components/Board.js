@@ -2,20 +2,18 @@ import React from 'react';
 import data from '../data';
 import TaskColumn from './TaskColumn';
 
-
-
-
-export const Board = () => {
+const Board = () => {
     const sortedItems = {
         open: [],
         completed: []
     };
 
-    data.map(item => {
+    data.map(item => (
         item.completed
             ? sortedItems.completed.push(item)
-            : sortedItems.open.push(item);
-    });
+            : sortedItems.open.push(item)
+        )
+    );
 
     return (
         <div>
@@ -32,3 +30,5 @@ export const Board = () => {
         </div>
     );
 };
+
+export default Board;

@@ -1,15 +1,14 @@
-import React, {Modal} from 'react';
+import React from 'react';
 import {XSquare} from 'react-feather';
 
-const addToList = (form) => {
-    form.preventDefault();
-    console.log(form);
-}
-
-const AddNewTaskForm = () => (
+const AddNewTaskForm = ({ showForm }) => {
+    return (
         <form>
-            <div className="icon-close">
-                <XSquare size='25' color="black"/>
+            <div
+                className="icon-close"
+                onClick={() => showForm(false)}
+            >
+                <XSquare size='25' color="black" />
             </div>
             <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Enter Title</label>
@@ -20,9 +19,11 @@ const AddNewTaskForm = () => (
                 <label htmlFor="exampleInputPassword1">Enter Description</label>
                 <input type="text" className="form-control" id="inputDesc" placeholder="Description"/>
             </div>
-            <button type="submit" className="btn btn-primary" onClick={addToList}>Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
-);
+    );
+}
+
 
 
 export default AddNewTaskForm;
