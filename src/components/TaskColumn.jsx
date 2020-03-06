@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import AddNewTaskForm from "./AddNewTaskForm";
 import { Modal } from "../parts";
 
-const TaskColumn = ({ addNewTask, items, title }) => {
+const TaskColumn = ({ items, title, ...rest }) => {
     const [show, showForm] = useState(false);
     return (
         <div className="development col-sm">
             <ul className={`list-group ${title === "completed" ? "completed" : "open"}`}>
                 <li className={`list-group-item ${title === "completed" ? "green" : "pink"}`}>
                     <h6 className="white-text">{title}</h6>
-                    {title === "open" && <Edit size='20' color="white" />}
                 </li>
 
                 {items.map(item => (
                     <li key={item.id} className="list-group-item">
                         { item.title}
+                        {title === "open" && <Edit size='20' color="grey" className="float-right"/>}
                     </li>
                     ))
                 }
@@ -32,7 +32,7 @@ const TaskColumn = ({ addNewTask, items, title }) => {
             </ul>
             <Modal modalState={show} handleState={showForm}>
                 <div className="contained-modal-title-vcenter">
-                    <AddNewTaskForm showForm={showForm} />
+                    <AddNewTaskForm showForm={showForm} {...rest} />
                 </div>
             </Modal>
         </div>

@@ -97,6 +97,10 @@ h6 {
  &.open {
    position: relative;
 
+   li {
+     cursor: pointer;
+   }
+
    label {
      width: 100%;
      position: absolute;
@@ -105,6 +109,12 @@ h6 {
      padding: 12px 0 12px 40px;
      margin: 0;
      height: 100%;
+   }
+
+   svg {
+     &:hover {
+       stroke: #2cac39;
+     }
    }
  }
 }

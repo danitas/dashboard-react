@@ -2,18 +2,22 @@ import React from 'react';
 import data from '../data';
 import TaskColumn from './TaskColumn';
 
-const Board = () => {
+const Board = ({ task, ...rest }) => {
     const sortedItems = {
         open: [],
         completed: []
     };
 
-    data.map(item => (
-        item.completed
-            ? sortedItems.completed.push(item)
-            : sortedItems.open.push(item)
-        )
-    );
+    data.map(item => {
+        if (item.completed) {
+            return sortedItems.completed.push(item);
+        }
+        return sortedItems.open.push(item);
+    });
+
+    if(Object.keys(task).length) {
+        sortedItems.open.push(task);
+    }
 
     return (
         <div>
@@ -24,6 +28,7 @@ const Board = () => {
                         items={sortedItems[item]}
                         key={item}
                         title={item}
+                        {...rest}
                     />
                 ))}
             </div>
