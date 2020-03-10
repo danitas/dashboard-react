@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {XSquare} from 'react-feather';
 
 const AddNewTaskForm = ({ showForm, addNewTask, title, description }) => {
     const iniInputsValue = {
         title: title,
-        description: description
+        description: description || title
     };
     const [inputGroup, changeInputValue] = useState(iniInputsValue);
     const onSubmit = event => {
@@ -13,6 +13,10 @@ const AddNewTaskForm = ({ showForm, addNewTask, title, description }) => {
         addNewTask(inputGroup);
         showForm(false);
     };
+
+    useEffect(()=>{
+        changeInputValue(iniInputsValue);
+    }, [title]);
 
     return (
         <form onSubmit={onSubmit}>

@@ -5,7 +5,9 @@ import TaskColumn from './TaskColumn';
 const Board = ({ task, ...rest }) => {
     const sortedItems = {
         open: [],
-        completed: []
+        inprogress: [],
+        completed: [],
+        onhold: []
     };
 
     data.map(item => {

@@ -6,6 +6,7 @@ import { Modal } from "../parts";
 
 const TaskColumn = ({ items, title, ...rest }) => {
     const [show, showForm] = useState(false);
+    const [selectedItem, setItem] = useState({});
     return (
         <div className="development col-sm">
             <ul className={`list-group ${title === "completed" ? "completed" : "open"}`}>
@@ -16,7 +17,21 @@ const TaskColumn = ({ items, title, ...rest }) => {
                 {items.map(item => (
                     <li key={item.id} className="list-group-item">
                         { item.title}
-                        {title === "open" && <Edit size='20' color="grey" className="float-right"/>}
+                        {title === "open" &&
+                        (
+                            <button
+                                type="button"
+                                onClick={
+                                    () => {
+                                        setItem(item);
+                                        showForm(!show);
+                                    }
+                                }
+                            >
+                                <Edit size='20' color="grey" className="float-right"/>
+                            </button>
+                        )}
+
                     </li>
                     ))
                 }
@@ -32,7 +47,7 @@ const TaskColumn = ({ items, title, ...rest }) => {
             </ul>
             <Modal modalState={show} handleState={showForm}>
                 <div className="contained-modal-title-vcenter">
-                    <AddNewTaskForm showForm={showForm} {...rest} />
+                    <AddNewTaskForm showForm={showForm} title={selectedItem.title}  {...rest} />
                 </div>
             </Modal>
         </div>
