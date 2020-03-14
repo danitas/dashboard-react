@@ -53,7 +53,6 @@ h6 {
 .contained-modal-title-vcenter {
   transition: -webkit-transform .3s ease-out;
   -webkit-transition: -webkit-transform .3s ease-out;
-  transition: transform .3s ease-out;
   transition: transform .3s ease-out,-webkit-transform .3s ease-out;
   -webkit-transform: translateY(-50px);
   transform: translateY(-50px);
@@ -63,12 +62,11 @@ h6 {
   padding: 10px;
   align-items: center;
   position: relative;
-  pointer-events: none;
   background: #ffffff;
   cursor: pointer;
 }
 
-.modal {
+.modal-task {
   position: fixed;
   top: 0;
   left: 0;
@@ -79,9 +77,13 @@ h6 {
   outline: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  display: block;
+  display: none;
   padding-right: 17px;
   background: #00000063;
+
+  &.open {
+    display: block;
+  }
 }
 
 .icon-close svg {
@@ -89,4 +91,30 @@ h6 {
   right: 0;
   top: 0;
   cursor: pointer
+}
+
+.list-group {
+ &.open {
+   position: relative;
+
+   li {
+     cursor: pointer;
+   }
+
+   label {
+     width: 100%;
+     position: absolute;
+     left: 0;
+     top: 0;
+     padding: 12px 0 12px 40px;
+     margin: 0;
+     height: 100%;
+   }
+
+   svg {
+     &:hover {
+       stroke: #2cac39;
+     }
+   }
+ }
 }

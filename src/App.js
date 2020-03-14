@@ -3,24 +3,24 @@ import { connect } from 'react-redux';
 
 import { addNewTask } from './redux/actions';
 
-import {Board} from './components/Board';
+import Board from './components/Board';
 
 //reducers
-const mapStateToProps = ({ count }) => ({
-    count
+const mapStateToProps = ({ task }) => ({
+    task
 });
 
 //actions
 const mapDispatchToProps = { addNewTask };
 
-function App({ addNewTask }) {
-  return (
+const App = ({ ...rest }) => {
+    return (
     <div className="container">
       <h1>Home</h1>
-        <Board addNewTask={addNewTask} />
+        <Board {...rest} />
     </div>
   );
-}
+};
 
 const connectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 

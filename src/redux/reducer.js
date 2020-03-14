@@ -1,13 +1,11 @@
 const initialState = {
-    count: 0
+    task: {}
 };
 
-export default function reducer(state = initialState, action, payload) {
-    console.log("-=-=-=-payload");
-    console.log(payload);
-    switch (action.type) {
-        case 'INCREMENT':
-            return {...state, count: state.count + 1};
+export default function reducer(state = initialState, { type, payload }) {
+    switch (type) {
+        case 'ADD_NEW_TASK':
+            return {...state, task: { ...payload }};
         default:
             return state
     }
