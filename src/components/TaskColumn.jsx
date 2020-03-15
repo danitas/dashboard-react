@@ -27,6 +27,7 @@ const TaskColumn = ({ items, title, ...rest }) => {
                                         showForm(!show);
                                     }
                                 }
+                                className="float-right"
                             >
                                 <Edit size='20' color="grey" className="float-right"/>
                             </button>
