@@ -24,6 +24,7 @@ export default function reducer(state = initialState, { type, payload }) {
                     ]
                 }
             };
+
         case 'SET_DATA':
             return {...state, taskList: {...payload} };
         default:
