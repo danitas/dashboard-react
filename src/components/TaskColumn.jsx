@@ -7,6 +7,7 @@ import { Modal } from "../parts";
 const TaskColumn = ({ items, title, ...rest }) => {
     const [show, showForm] = useState(false);
     const [selectedItem, setItem] = useState({});
+
     return (
         <div className="development col-sm">
             <ul className={`list-group ${title === "completed" ? "completed" : "open"}`}>
@@ -30,6 +31,7 @@ const TaskColumn = ({ items, title, ...rest }) => {
                                 className="float-right"
                             >
                                 <Edit size='20' color="grey" className="float-right"/>
+
                             </button>
                         )}
 

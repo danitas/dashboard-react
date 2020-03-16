@@ -2,12 +2,6 @@ import React from 'react';
 import TaskColumn from './TaskColumn';
 
 const Board = ({ taskList, task, ...rest }) => {
-
-   /* if(Object.keys(task).length) {
-        sortedItems.open.push(task);
-    }*/
-   console.log("taskList", taskList);
-
     return (
         <div>
             <h2>Backlog</h2>

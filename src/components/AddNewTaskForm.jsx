@@ -12,11 +12,14 @@ const AddNewTaskForm = ({ showForm, addNewTask, title, description }) => {
         event.preventDefault();
         addNewTask(inputGroup);
         showForm(false);
+        console.log(" title, description", inputGroup.title);
+        inputGroup.title = null;
+        inputGroup.description = null;
     };
 
     useEffect(()=>{
         changeInputValue(iniInputsValue);
-    }, [title]);
+    }, [title, description]);
 
     return (
         <form onSubmit={onSubmit}>
@@ -33,8 +36,15 @@ const AddNewTaskForm = ({ showForm, addNewTask, title, description }) => {
                     className="form-control"
                     id="inputTitle"
                     placeholder="Enter title"
-                    value={inputGroup.title}
-                    onChange={({ target: { value } }) => changeInputValue({...inputGroup, title: value })}
+                    value={inputGroup.title || ""}
+                    onChange={
+                        ({ target: { value } }) => changeInputValue(
+                            {
+                                ...inputGroup,
+                                title: value}
+                            )
+                    }
+                    required
                 />
             </div>
             <div className="form-group">
@@ -44,8 +54,9 @@ const AddNewTaskForm = ({ showForm, addNewTask, title, description }) => {
                     className="form-control"
                     id="inputDesc"
                     placeholder="Description"
-                    value={inputGroup.description}
+                    value={inputGroup.description || ""}
                     onChange={({ target: { value } }) => changeInputValue({...inputGroup, description: value })}
+                    required
                 />
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
