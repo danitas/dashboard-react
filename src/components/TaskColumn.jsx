@@ -8,6 +8,9 @@ const TaskColumn = ({ items, title, ...rest }) => {
     const [show, showForm] = useState(false);
     const [selectedItem, setItem] = useState({});
 
+    console.log("-=-=-=-selectedItem");
+    console.log(selectedItem);
+
     return (
         <div className="development col-sm">
             <ul className={`list-group ${title === "completed" ? "completed" : "open"}`}>
@@ -50,7 +53,7 @@ const TaskColumn = ({ items, title, ...rest }) => {
             </ul>
             <Modal modalState={show} handleState={showForm}>
                 <div className="contained-modal-title-vcenter">
-                    <AddNewTaskForm showForm={showForm} title={selectedItem.title}  {...rest} />
+                    <AddNewTaskForm showForm={showForm} title={selectedItem.title} selectedItem={selectedItem}  {...rest} />
                 </div>
             </Modal>
         </div>

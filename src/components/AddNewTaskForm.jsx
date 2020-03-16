@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {XSquare} from 'react-feather';
 
-const AddNewTaskForm = ({ showForm, addNewTask, title, description }) => {
+const AddNewTaskForm = ({ showForm, addNewTask, selectedItem,  title, description }) => {
     const iniInputsValue = {
         title: title,
         description: description || title
@@ -12,9 +12,8 @@ const AddNewTaskForm = ({ showForm, addNewTask, title, description }) => {
         event.preventDefault();
         addNewTask(inputGroup);
         showForm(false);
-        console.log(" title, description", inputGroup.title);
-        inputGroup.title = null;
-        inputGroup.description = null;
+        selectedItem = null;
+        console.log("selectedItem", selectedItem);
     };
 
     useEffect(()=>{
@@ -36,7 +35,7 @@ const AddNewTaskForm = ({ showForm, addNewTask, title, description }) => {
                     className="form-control"
                     id="inputTitle"
                     placeholder="Enter title"
-                    value={inputGroup.title || ""}
+                    value={inputGroup.title}
                     onChange={
                         ({ target: { value } }) => changeInputValue(
                             {
@@ -54,7 +53,7 @@ const AddNewTaskForm = ({ showForm, addNewTask, title, description }) => {
                     className="form-control"
                     id="inputDesc"
                     placeholder="Description"
-                    value={inputGroup.description || ""}
+                    value={inputGroup.description}
                     onChange={({ target: { value } }) => changeInputValue({...inputGroup, description: value })}
                     required
                 />
